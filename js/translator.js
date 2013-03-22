@@ -1,4 +1,18 @@
+$(document).ready(function(){
+    $("body").css("overflow", "hidden");
+});
 
+// Show Overflow of Body when Everything has Loaded //
+$(window).load(function(){
+    $("body").css("overflow", "visible");        
+    var nice=$('html').niceScroll({cursorborder:"",cursorcolor:"#333333",cursorwidth:"8px", boxzoom:true, autohidemode:false});
+
+});
+
+$(document).bind("mobileinit", function() {
+  $.support.touchOverflow = true;
+  $.mobile.touchOverflowEnabled = true;
+});
 
 
 $( document ).delegate("#homepage", "pageinit", function() {
@@ -6,10 +20,6 @@ $( document ).delegate("#homepage", "pageinit", function() {
 });
 
 $( document ).delegate("#translator", "pageinit", function() {
-
-$("#clicca").click(function() {
-alert("Handler for .click() called.");
-});
 
 
 var alpha1  = "abcdefghijklmnopqrstuvwxyz";
