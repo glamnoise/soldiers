@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>TRANSLATE CAIO GIULIO CESARE code v.1.2</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+<div style="padding:5%">
+  <h1 style="color:#FC0">TRANSLATE CAIO GIULIO CESARE code v.1.2</h1>
+  <label style="color:#CCC">numero skip letter: </label><input name="skip" type="number" step="1" value="0" id="skip" style="background:#000; color:#CCC; border:none;padding:15px" ><br>
+
+  <textarea name="cesare" cols="" rows="" style="width:90%; height:150px; background:#000; color:#CCC; border:none;padding:15px" id="cesare"></textarea>
+  <hr>
+  <h2 style="color:#090">Risultato Codifica:</h2>
+  <div id="risultatoCodifica" style="color:#090"></div><hr>
+  <h2 style="color:#F00">Risultato Decodifica:</h2>
+  <div id="risultatoDecodifica" style="color:#F00"></div>
+</div>
+
+<!-- Services --> 
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script> 
+<script src="js/plugins.js"></script> 
+<script>
+      var alpha1  = "abcdefghijklmnopqrstuvwxyz";
+var alpha2  = "defghijklmnopqrstuvwxyzabc";
+var alpha3  = "abcdefghijklmnopqrstuvwxyz";
+var newstr = null; 
+var newDecode = null; 
+
+var skip = $('#skip').val();
+
+console.log(skip);
+
+function codifica(parola){
+   skip = $('#skip').val(); 
+   newstr = '';    
+for(var i=0; i<parola.length;i++) {
+    
+    
+    charPos = alpha1.indexOf(parola.charAt(i));
+    newCharPos=(Number(charPos)+ Number(skip));
+    console.log(charPos +" + " + skip + " = "+ newCharPos );
+    console.log(newCharPos + '<' + alpha1.length );
+    if (newCharPos < alpha1.length ){
+    newstr += alpha1.charAt(newCharPos);
+    }else{
+        
+      newstr += alpha1.charAt( (Number(charPos) + Number(skip)) - Number(alpha1.length));  
+    }
+	
+    /*if (newCarPos >= alpha1.length){
+		
+	newstr += alpha1.charAt(newCarPos);
+	}else{
+		console.log(newCarPos +"qui"+ alpha1.charAt(alpha1.length - skip));
+	newDecode += alpha1.charAt(alpha1.length - skip);
+		}
+     */
+}
+    
+return newstr
+
+}
+
+function decodifica(decode){
+	newDecode = '';
+    
+    for(var i=0; i<decode.length;i++) {
+    
+	
+    charPosDec = alpha1.indexOf(decode.charAt(i));
+    
+    newCharDec=(Number(charPosDec)- Number(skip));
+	
+    /*console.log(charPosDec +" - " + skip + " = "+ newCharDec );
+    console.log(newCharDec + '-' + alpha1.length );*/
+    if(newCharDec >= 0 ){
+    newDecode += alpha1.charAt(newCharDec);
+    }else{
+     newDecode += alpha1.charAt(Number( alpha1.length ) - Number(skip) + Number(charPosDec) );   
+        
+    }
+}
+
+    
+return newDecode
+}
+
+
+
+
+
+$('#cesare').bind("keyup change", function(e) {
+	val = $(this).val().toLowerCase();
+	codifica(val);
+	decodifica(val);
+   $('#risultatoCodifica').text(newstr);
+   $('#risultatoDecodifica').text(newDecode);
+   
+	});
+
+
+        </script>
+</body>
+</html>
