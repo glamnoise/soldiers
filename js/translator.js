@@ -1,34 +1,41 @@
-$(document).ready(function(){
-    $("body").css("overflow", "hidden");
-});
+var nice = false;
 
-// Show Overflow of Body when Everything has Loaded //
-$(window).load(function(){
-    $("body").css("overflow", "visible");        
-    var nice=$('html').niceScroll({cursorborder:"",cursorcolor:"#333333",cursorwidth:"8px", boxzoom:true, autohidemode:false});
+$(document).ready(
 
-});
+  function() { 
 
-$(document).bind("mobileinit", function() {
-  $.support.touchOverflow = true;
-  $.mobile.touchOverflowEnabled = true;
-});
+    nice = $("html").niceScroll({cursorborder:"",cursorcolor:"#333333",cursorwidth:"8px"});
+
+  }
+
+);
+
+
+
 
 
 $( document ).delegate("#homepage", "pageinit", function() {
-
+nice = $("html").niceScroll({cursorborder:"",cursorcolor:"#333333",cursorwidth:"8px"});
 });
 
 $( document ).delegate("#translator", "pageinit", function() {
 
+    nice = $("html").niceScroll({cursorborder:"",cursorcolor:"#333333",cursorwidth:"8px"});
 
-var alpha1  = "abcdefghijklmnopqrstuvwxyz";
-var alpha2  = "defghijklmnopqrstuvwxyzabc";
-var alpha3  = "abcdefghijklmnopqrstuvwxyz";
+
+
+var alpha1 ="abcdefghijklmnopqrstuvwxyz";
+var easy   ="abcdefghilmnopqrstuvz";
+var medium ="abcdefghiklmnopqrstuvxyz";
+var full   ="abcdefghijklmnopqrstuvwxyz";
+var custom ="";
+var val="";
+
 var newstr = null; 
 var newDecode = null; 
 
 var skip = $('#skip').val();
+var type = $('#type').val();
 
 console.log(skip);
 
@@ -88,8 +95,43 @@ return newDecode
 }
 
 
+$('#type').change(function(){
+selezione = $(this).val();
+if (selezione == "full") {
+ alpha1 = full; 
+}if (selezione == "easy") {
+ alpha1 = easy; 
+}if (selezione == "medium") {
+ alpha1 = medium;
+}if (selezione =="custom"){
+$('#customDiv').show();
+custom = $('#customText').val();
+alpha1 = custom;
+}
+if (selezione !="custom"){
+$('#customDiv').fadeOut();
+}
+esegui();
+});
 
 
+
+$('#customText').bind('input', function() { 
+   custom =  $(this).val() // get the current value of the input field.
+});
+
+
+function esegui(){
+
+
+  val = $('#cesare').val().toLowerCase().replace(/\s/g, "");
+  codifica(val);
+  decodifica(val);
+   $('#risultatoCodifica').text(newstr);
+   $('#risultatoDecodifica').text(newDecode);
+
+
+}
 
 $('#cesare').bind("keyup change", function(e) {
   val = $(this).val().toLowerCase().replace(/\s/g, "");

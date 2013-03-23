@@ -40,7 +40,16 @@
 
 
    </script> 
-  <label style="color:#CCC">numero skip letter: </label><input name="skip" type="number" step="1" value="0" id="skip" style="background:#000; color:#CCC; border:none;" ><br>
+  <label style="color:#CCC">Level: </label><input name="skip" type="number" step="1" value="0" id="skip" style="background:#000; color:#CCC; border:none;" ><label style="color:#CCC">Type: </label>
+<select name="type" id="type">
+    <option value="easy">21 Let. A-Z (italiano)</option>
+    <option value="medium">24 Let. A-Z+KXY (italiano wikipedia)</option>
+    <option value="full" selected="selected">26 Let. A-Z+JKWXY (Inter.)</option>
+    <option value="custom">Custom (Beta version)</option>
+  </select>
+  <div id="customDiv" style="display:none">
+  <label style="color:#CCC">Custom: </label><input name="customText" type="text" id="customText" style="background:#000; color:#CCC; border:none;" >
+  </div>
 
   <textarea name="cesare" cols="" rows="" style="height:150px; background:#000; color:#CCC; border:none;" id="cesare"></textarea>
   <hr>

@@ -30,15 +30,47 @@
 <!-- Home -->
 <div data-role="page" id="homepage" data-theme="a" >
     <div data-role="content"  class="center-wrapper">
-        <div style="margin-top:50%">
-           
-       
-        <a data-role="button" data-theme="a" href="translator.html" data-icon="check" data-iconpos="left" data-transition="pop">
+        <div style="margin-top:50%">   
+        <a data-role="button" data-theme="a" href="#translator" data-icon="check" data-iconpos="left" data-transition="pop">
             Encode/Decode
         </a>
          </div>
     </div>
 </div>
+
+
+
+<div data-role="page"  id="translator" data-theme="a" >
+
+<div data-role="header">
+    <a href="#homepage" data-icon="home" data-transition="pop">Home</a>
+    <h1>Guitti Encode/Decode system v1.3</h1>
+</div>
+
+    <div data-role="content">
+
+  <label style="color:#CCC">Level: </label><input name="skip" type="number" step="1" value="0" id="skip" style="background:#000; color:#CCC; border:none;" ><label style="color:#CCC">Type: </label>
+<select name="type" id="type">
+    <option value="easy">21 Let. A-Z (italiano)</option>
+    <option value="medium">24 Let. A-Z+KXY (italiano wikipedia)</option>
+    <option value="full" selected="selected">26 Let. A-Z+JKWXY (Inter.)</option>
+    <option value="custom">Custom (Beta version)</option>
+  </select>
+  <div id="customDiv" style="display:none">
+  <label style="color:#CCC">Custom: </label><input name="customText" type="text" id="customText" style="background:#000; color:#CCC; border:none;" >
+  </div>
+
+  <textarea name="cesare" cols="" rows="" style="height:150px; background:#000; color:#CCC; border:none;" id="cesare"></textarea>
+  <hr>
+  <h2 style="color:#090">Risultato Codifica:</h2>
+  <div id="risultatoCodifica" style="color:#090"></div><hr>
+  <h2 style="color:#F00">Risultato Decodifica:</h2>
+  <div id="risultatoDecodifica" style="color:#F00"></div>
+
+</div>
+</div>
+
+
 
 </body>
 </html>

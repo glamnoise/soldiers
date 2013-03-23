@@ -10,7 +10,13 @@
    Base styles: opinionated defaults
    ========================================================================== */
 #homepage{
-  background: url('../images/iconabig.png') center center no-repeat;
+
+background: url('../images/bgguitti.jpg') center center;
+ -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+min-height: 100%;
 
 }
 .center-wrapper {
