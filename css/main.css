@@ -42,10 +42,9 @@ background: -ms-radial-gradient(center, ellipse cover,  rgba(51,51,51,1) 0%,rgba
 background: radial-gradient(ellipse at center,  rgba(51,51,51,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
 
-   margin:0;
+    margin:0;
     padding:0;
-    height:100%;
-	overflow:hidden;
+    
 	font-family: 'Orbitron', sans-serif;
 	
 	 -webkit-perspective-origin:50% 50%;
